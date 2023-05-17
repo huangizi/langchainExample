@@ -1,16 +1,15 @@
-# This is a sample Python script.
+import os
+#llms:large languages model support 大语言模型支持
+from langchain.llms import OpenAI
+#promts templates:manage promts for LLMS promt管理
+from langchain.prompts import PromptTemplate
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# 设置openai的api key
+os.environ['OPENAI_API_KEY'] = "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"
+os.environ["http_proxy"] = "http://127.0.0.1:7890"
+os.environ["https_proxy"] = "http://127.0.0.1:7890"
 
+llm = OpenAI(temperature = 0.9)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+text = "what are 5 vacation destinations for someone who likes to go skiing?"
+print(llm(text))
